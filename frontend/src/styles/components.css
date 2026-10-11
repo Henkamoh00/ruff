@@ -1,0 +1,87 @@
+/* الأزرار: نفس أسماء الأصل في styles.css */
+.button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button span {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.button-dark {
+  color: #fff;
+  background: var(--forest);
+}
+
+.button-dark:hover {
+  background: var(--forest-soft);
+}
+
+.button-primary {
+  color: var(--forest-deep);
+  background: var(--lime);
+  box-shadow: 0 8px 20px rgba(215, 243, 106, 0.18);
+}
+
+.button-primary:hover {
+  background: var(--lime-dark);
+  box-shadow: 0 11px 25px rgba(215, 243, 106, 0.25);
+}
+
+.button-outline {
+  color: var(--forest);
+  background: #fff;
+  border-color: var(--line);
+}
+
+.button-outline:hover {
+  border-color: #b8c99e;
+  background: var(--lime-soft);
+}
+
+.button-danger {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.button-small {
+  min-height: 38px;
+  padding: 7px 14px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.button-full {
+  width: 100%;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #6a824a;
+  font-size: 12px;
+  font-weight: 700;
+}

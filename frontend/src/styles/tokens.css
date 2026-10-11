@@ -1,0 +1,20 @@
+:root {
+  --forest: #123b32;
+  --forest-deep: #0b2b25;
+  --forest-soft: #1d5144;
+  --lime: #d7f36a;
+  --lime-dark: #c5e64d;
+  --lime-soft: #f0f5df;
+  --paper: #f8f8f2;
+  --white: #ffffff;
+  --ink: #172722;
+  --muted: #68756e;
+  --line: #e5e8df;
+  --peach: #ffe1cf;
+  --blue: #dce9f4;
+  --danger: #b4412f;
+  --danger-soft: #fbe9e5;
+  --radius-lg: 28px;
+  --shadow: 0 28px 80px rgba(11, 43, 37, 0.13);
+  --font-body: 'IBM Plex Sans Arabic', Tahoma, Arial, sans-serif;
+}
