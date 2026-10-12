@@ -11,6 +11,7 @@ import BrandLogo from '@/components/BrandLogo.vue'
       <RouterLink :to="{ name: 'home', hash: '#how' }">كيف يعمل؟</RouterLink>
       <RouterLink :to="{ name: 'catalog-demo' }">نموذج الكتالوج</RouterLink>
       <RouterLink :to="{ name: 'home', hash: '#benefits' }">لماذا رَف؟</RouterLink>
+      <RouterLink :to="{ name: 'contact' }">تواصل معنا</RouterLink>
     </nav>
 
     <div class="header-actions">
@@ -34,7 +35,7 @@ import BrandLogo from '@/components/BrandLogo.vue'
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
   margin-inline-start: auto;
   margin-inline-end: 10px;
 }
@@ -75,16 +76,13 @@ import BrandLogo from '@/components/BrandLogo.vue'
 
 @media (max-width: 900px) {
   .main-nav {
-    gap: 18px;
+    gap: 16px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 760px) {
   .main-nav {
     display: none;
-  }
-  .site-header {
-    margin-inline-end: 0;
   }
   .header-actions {
     margin-inline-start: auto;

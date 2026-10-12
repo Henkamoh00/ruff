@@ -8,8 +8,9 @@ export const demoStore = {
   tagline: 'ملابس نسائية واختيارات يومية',
   city: 'بسكرة، الجزائر',
   address: null,
-  phone: '0555 00 00 00',
-  whatsapp: '0555 00 00 00',
+  currency: 'DZD',
+  phone: '+213 555 00 00 00',
+  whatsapp: '+213 555 00 00 00',
   socials: [],
   hero: {
     eyebrow: 'اختيارات الموسم',

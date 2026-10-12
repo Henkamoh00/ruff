@@ -3,10 +3,24 @@ import { createRouter, createWebHistory } from 'vue-router'
 import PublicLayout from '@/layouts/PublicLayout.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import DashboardLayout from '@/layouts/DashboardLayout.vue'
-import PagePlaceholder from '@/views/PagePlaceholder.vue'
 import HomeView from '@/views/public/HomeView.vue'
 import CatalogDemoView from '@/views/public/CatalogDemoView.vue'
 import PublicCatalogView from '@/views/public/PublicCatalogView.vue'
+import PrivacyView from '@/views/public/PrivacyView.vue'
+import TermsView from '@/views/public/TermsView.vue'
+import ContactView from '@/views/public/ContactView.vue'
+import NotFoundView from '@/views/public/NotFoundView.vue'
+import LoginView from '@/views/auth/LoginView.vue'
+import RegisterView from '@/views/auth/RegisterView.vue'
+import DashboardHomeView from '@/views/dashboard/DashboardHomeView.vue'
+import StoreCreateView from '@/views/dashboard/StoreCreateView.vue'
+import StoreEditView from '@/views/dashboard/StoreEditView.vue'
+import ProductsView from '@/views/dashboard/ProductsView.vue'
+import ProductCreateView from '@/views/dashboard/ProductCreateView.vue'
+import ProductEditView from '@/views/dashboard/ProductEditView.vue'
+import PreviewView from '@/views/dashboard/PreviewView.vue'
+import SettingsView from '@/views/dashboard/SettingsView.vue'
+import UpgradeView from '@/views/dashboard/UpgradeView.vue'
 
 const routes = [
   // ---------- الصفحات العامة ----------
@@ -21,16 +35,22 @@ const routes = [
         meta: { title: 'الصفحة الرئيسية', announcement: true },
       },
       {
+        path: 'contact',
+        name: 'contact',
+        component: ContactView,
+        meta: { title: 'تواصل معنا' },
+      },
+      {
         path: 'privacy',
         name: 'privacy',
-        component: PagePlaceholder,
-        meta: { title: 'سياسة الخصوصية', batch: 3 },
+        component: PrivacyView,
+        meta: { title: 'سياسة الخصوصية' },
       },
       {
         path: 'terms',
         name: 'terms',
-        component: PagePlaceholder,
-        meta: { title: 'شروط الاستخدام', batch: 3 },
+        component: TermsView,
+        meta: { title: 'شروط الاستخدام' },
       },
     ],
   },
@@ -57,14 +77,14 @@ const routes = [
       {
         path: 'login',
         name: 'login',
-        component: PagePlaceholder,
-        meta: { title: 'تسجيل الدخول', batch: 3 },
+        component: LoginView,
+        meta: { title: 'تسجيل الدخول' },
       },
       {
         path: 'register',
         name: 'register',
-        component: PagePlaceholder,
-        meta: { title: 'إنشاء حساب', batch: 3 },
+        component: RegisterView,
+        meta: { title: 'إنشاء حساب' },
       },
     ],
   },
@@ -77,66 +97,72 @@ const routes = [
       {
         path: '',
         name: 'dashboard',
-        component: PagePlaceholder,
-        meta: { title: 'لوحة التحكم', batch: 4 },
+        component: DashboardHomeView,
+        meta: { title: 'لوحة التحكم' },
       },
       {
         path: 'store/new',
         name: 'store-new',
-        component: PagePlaceholder,
-        meta: { title: 'إنشاء المتجر', batch: 4 },
+        component: StoreCreateView,
+        meta: { title: 'إنشاء المتجر' },
       },
       {
         path: 'store',
         name: 'store-edit',
-        component: PagePlaceholder,
-        meta: { title: 'بيانات المتجر', batch: 4 },
+        component: StoreEditView,
+        meta: { title: 'بيانات المتجر' },
       },
       {
         path: 'products',
         name: 'products',
-        component: PagePlaceholder,
-        meta: { title: 'المنتجات', batch: 5 },
+        component: ProductsView,
+        meta: { title: 'المنتجات' },
       },
       {
         path: 'products/new',
         name: 'product-new',
-        component: PagePlaceholder,
-        meta: { title: 'إضافة منتج', batch: 5 },
+        component: ProductCreateView,
+        meta: { title: 'إضافة منتج' },
       },
       {
         path: 'products/:productId/edit',
         name: 'product-edit',
-        component: PagePlaceholder,
-        meta: { title: 'تعديل منتج', batch: 5 },
+        component: ProductEditView,
+        meta: { title: 'تعديل منتج' },
       },
       {
         path: 'preview',
         name: 'preview',
-        component: PagePlaceholder,
-        meta: { title: 'معاينة الكتالوج', batch: 6 },
+        component: PreviewView,
+        meta: { title: 'معاينة الكتالوج' },
       },
       {
         path: 'settings',
         name: 'settings',
-        component: PagePlaceholder,
-        meta: { title: 'إعدادات الحساب', batch: 6 },
+        component: SettingsView,
+        meta: { title: 'إعدادات الحساب' },
       },
       {
         path: 'upgrade',
         name: 'upgrade',
-        component: PagePlaceholder,
-        meta: { title: 'حد المنتجات والترقية', batch: 5 },
+        component: UpgradeView,
+        meta: { title: 'حد المنتجات والترقية' },
       },
     ],
   },
 
-  // ---------- 404 ----------
+  // ---------- 404 (داخل التخطيط العام) ----------
   {
     path: '/:pathMatch(.*)*',
-    name: 'not-found',
-    component: PagePlaceholder,
-    meta: { title: 'الصفحة غير موجودة', batch: 3 },
+    component: PublicLayout,
+    children: [
+      {
+        path: '',
+        name: 'not-found',
+        component: NotFoundView,
+        meta: { title: 'الصفحة غير موجودة' },
+      },
+    ],
   },
 ]
 

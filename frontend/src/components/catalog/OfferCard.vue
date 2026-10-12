@@ -3,6 +3,7 @@ import { discountPercent, formatPrice } from '@/utils/format'
 
 defineProps({
   product: { type: Object, required: true },
+  currency: { type: String, default: '' },
   label: { type: String, default: 'عرض' },
 })
 </script>
@@ -20,8 +21,8 @@ defineProps({
       <span class="offer-type">{{ label }}</span>
       <h3>{{ product.name }}</h3>
       <div class="price-line">
-        <strong>{{ formatPrice(product.price) }}</strong>
-        <del>{{ formatPrice(product.originalPrice) }}</del>
+        <strong>{{ formatPrice(product.price, currency) }}</strong>
+        <del>{{ formatPrice(product.originalPrice, currency) }}</del>
       </div>
     </div>
   </article>

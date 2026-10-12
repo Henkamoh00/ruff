@@ -12,6 +12,7 @@ function scrollToTop() {
     <BrandLogo size="sm" />
     <p>منتجات محلك، في رابط واحد.</p>
     <nav class="footer-links" aria-label="روابط التذييل">
+      <RouterLink :to="{ name: 'contact' }">تواصل معنا</RouterLink>
       <RouterLink :to="{ name: 'privacy' }">الخصوصية</RouterLink>
       <RouterLink :to="{ name: 'terms' }">الشروط</RouterLink>
       <button type="button" class="back-to-top" @click="scrollToTop">العودة للأعلى ↑</button>
@@ -38,7 +39,8 @@ function scrollToTop() {
 .footer-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 8px 20px;
   color: #526259;
   font-size: 11px;
   font-weight: 600;

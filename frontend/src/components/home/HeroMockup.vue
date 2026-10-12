@@ -274,10 +274,16 @@
 .visual-caption { position: absolute; bottom: 3px; width: 100%; text-align: center; color: #839087; font-size: 9px; }
 
 @media (max-width: 900px) {
-  .hero-visual { width: min(100%, 540px); margin: 0 auto; padding-block: 30px 33px; }
+  /* قصّ الزائد على الحاوية نفسها كي لا يتوسع عرض الصفحة على الهاتف */
+  .hero-visual {
+    width: min(100%, 540px);
+    margin: 0 auto;
+    padding-block: 30px 33px;
+    overflow-x: clip;
+  }
   .catalog-window { width: min(100%, 410px); }
   .note-top { left: 0; }
-  .note-bottom { right: -1px; }
+  .note-bottom { right: 0; }
   .orbit-one { right: 0; }
   .orbit-two { right: 40px; }
 }
@@ -292,8 +298,8 @@
   .cover-copy strong { font-size: 21px; }
   .cover-sun { right: 23px; width: 60px; height: 60px; }
   .cover-arch { right: 55px; }
-  .note-top { top: 39px; left: -3px; }
-  .note-bottom { bottom: 53px; right: -3px; }
+  .note-top { top: 39px; left: 0; }
+  .note-bottom { bottom: 53px; right: 0; }
   .floating-note { padding: 8px 10px; gap: 6px; }
   .floating-note strong { font-size: 9px; }
   .floating-note small { font-size: 7px; }

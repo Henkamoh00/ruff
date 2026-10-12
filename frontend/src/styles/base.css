@@ -13,6 +13,8 @@ body {
   font-family: var(--font-body);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  /* يمنع التمرير الأفقي الناتج عن العناصر الزخرفية الخارجة عن الإطار على الهاتف */
+  overflow-x: clip;
 }
 
 a {
@@ -30,6 +32,13 @@ textarea {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #7f9561;
+  outline-offset: 2px;
 }
 
 img {

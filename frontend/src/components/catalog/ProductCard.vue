@@ -3,6 +3,7 @@ import { formatPrice, hasDiscount } from '@/utils/format'
 
 defineProps({
   product: { type: Object, required: true },
+  currency: { type: String, default: '' },
 })
 </script>
 
@@ -18,8 +19,8 @@ defineProps({
       <h3>{{ product.name }}</h3>
       <p>{{ product.description }}</p>
       <div class="price-line">
-        <strong>{{ formatPrice(product.price) }}</strong>
-        <del v-if="hasDiscount(product)">{{ formatPrice(product.originalPrice) }}</del>
+        <strong>{{ formatPrice(product.price, currency) }}</strong>
+        <del v-if="hasDiscount(product)">{{ formatPrice(product.originalPrice, currency) }}</del>
       </div>
     </div>
   </article>

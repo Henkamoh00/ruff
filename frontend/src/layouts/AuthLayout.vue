@@ -17,6 +17,7 @@ import BrandLogo from '@/components/BrandLogo.vue'
     </main>
 
     <footer class="auth-footer container">
+      <RouterLink :to="{ name: 'contact' }">تواصل معنا</RouterLink>
       <RouterLink :to="{ name: 'privacy' }">الخصوصية</RouterLink>
       <RouterLink :to="{ name: 'terms' }">الشروط</RouterLink>
       <small>© 2026 رَف</small>
@@ -68,7 +69,8 @@ import BrandLogo from '@/components/BrandLogo.vue'
 .auth-footer {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 8px 20px;
   padding-block: 20px 26px;
   color: #7c877d;
   font-size: 11px;

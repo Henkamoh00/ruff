@@ -91,6 +91,7 @@ const countLabel = computed(() =>
               v-for="product in offers"
               :key="product.id"
               :product="product"
+              :currency="store.currency"
               :label="isDemo ? 'عرض توضيحي' : 'عرض'"
             />
           </div>
@@ -106,7 +107,12 @@ const countLabel = computed(() =>
             <span class="products-count">{{ countLabel }}</span>
           </div>
           <div class="catalog-products-grid">
-            <ProductCard v-for="product in shownProducts" :key="product.id" :product="product" />
+            <ProductCard
+              v-for="product in shownProducts"
+              :key="product.id"
+              :product="product"
+              :currency="store.currency"
+            />
           </div>
         </section>
       </template>
