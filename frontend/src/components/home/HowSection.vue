@@ -30,7 +30,7 @@ const steps = [
       <h2>من صور منتجاتك<br />إلى رابط جاهز.</h2>
       <p>الفكرة أن يكون عرض منتجاتك أسهل، دون أن تغيّر طريقة عمل محلك.</p>
       <RouterLink class="button button-dark" :to="{ name: 'register' }">
-        جـرّب رَف <span aria-hidden="true">↗</span>
+        جـرّب رَف مجانًا<span aria-hidden="true">↗</span>
       </RouterLink>
     </div>
 
@@ -44,7 +44,7 @@ const steps = [
         <span class="step-symbol" aria-hidden="true">{{ step.symbol }}</span>
       </article>
       <p class="steps-disclaimer">
-        رَف في مرحلة اختبار الفكرة. التسجيل لا يُلزمك بالشراء، ولم يبدأ الاشتراك المدفوع بعد.
+        رَف الإصدار التجريبي. التسجيل لا يُلزمك بالشراء.
       </p>
     </div>
   </section>

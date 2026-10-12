@@ -10,7 +10,7 @@ const route = useRoute()
   <div class="public-layout">
     <div v-if="route.meta.announcement" class="announcement">
       <span class="announcement-dot" aria-hidden="true"></span>
-      <span>رَف قيد التجربة — نبحث عن أوّل المحلات المشاركة</span>
+      <span>رَف — الإصدار التجريبي</span>
       <RouterLink :to="{ name: 'register' }">
         كن من الأوائل <span aria-hidden="true">←</span>
       </RouterLink>

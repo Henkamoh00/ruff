@@ -7,23 +7,25 @@ import { RouterLink } from 'vue-router'
     <div class="join-pattern" aria-hidden="true"></div>
     <div class="container join-content">
       <div class="join-copy">
-        <span class="join-label"><span></span> نبحث عن أول المحلات المشاركة</span>
+        <span class="join-label"><span></span>أنشئ كاتالوج متجرك الآن وشاركه برابط واحد مباشر</span>
         <h2>هل يناسب رَف<br />محلّك؟</h2>
         <p>
-          سجّل اهتمامك وأخبرنا عن نشاطك وكيف تعرض منتجاتك حاليًا، لنطوّر رَف بما يناسب احتياجاتك. كن
-          من أوائل من يحصلون على رَف عند إطلاقه.
+          يدعم رَف العديد من أنواع المتاجر.
+        </p>
+        <p>
+          سجّل مجّانًا وقم بإعداد كاتالوج متجرك، وسترى كيف يسهل عليك رَف ما كنت تبذل فيه الكثير من الوقت.
         </p>
       </div>
 
       <div class="join-action-card">
         <div class="form-mini-icon" aria-hidden="true">✳</div>
-        <h3>شاركنا رأيك</h3>
+        <h3>جرّب بنفسك</h3>
         <p>في أقل من دقيقة. لا يوجد دفع أو التزام في هذه المرحلة.</p>
         <RouterLink class="button button-primary button-full" :to="{ name: 'register' }">
-          سجّل اهتمامك مجانًا <span aria-hidden="true">↗</span>
+          سجّل مجانًا <span aria-hidden="true">↗</span>
         </RouterLink>
         <span class="privacy-note">
-          <span aria-hidden="true">◈</span>إجابتك تساعدنا على بناء خدمة يحتاجها أصحاب المحلات فعلًا.
+          <span aria-hidden="true">◈</span>لا تتردّد إنها خطوة مفيدة فعلا وسترى مردودها.
         </span>
       </div>
     </div>

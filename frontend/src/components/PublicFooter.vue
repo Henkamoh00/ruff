@@ -17,7 +17,7 @@ function scrollToTop() {
       <RouterLink :to="{ name: 'terms' }">الشروط</RouterLink>
       <button type="button" class="back-to-top" @click="scrollToTop">العودة للأعلى ↑</button>
     </nav>
-    <small>© 2026 رَف — الفكرة قيد الاختبار.</small>
+    <small>© 2026 رَف — الإصدار التجريبي.</small>
   </footer>
 </template>
 

@@ -9,7 +9,7 @@ import HeroMockup from '@/components/home/HeroMockup.vue'
       <div class="eyebrow">
         <span class="eyebrow-icon" aria-hidden="true">✳</span> واجهة رقمية لمحلّك
       </div>
-      <h1>خلّي زبونك يشوف منتجاتك <span class="highlight">قبل ما يوصل عندك.</span></h1>
+      <h1>دع زبونك يـرى منتجاتك <span class="highlight">قبل أن يصل إليك.</span></h1>
       <p class="hero-description">
         كتالوج إلكتروني أنيق يجمع صور منتجاتك وأسعارها ومعلومات التواصل في رابط واحد. شاركه على
         واتساب أو إنستغرام، واستقبل الزبائن في محلك — حتى لو كان البيع داخل المحل فقط.
