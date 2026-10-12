@@ -30,7 +30,7 @@ const steps = [
       <h2>من صور منتجاتك<br />إلى رابط جاهز.</h2>
       <p>الفكرة أن يكون عرض منتجاتك أسهل، دون أن تغيّر طريقة عمل محلك.</p>
       <RouterLink class="button button-dark" :to="{ name: 'register' }">
-        أخبرني عن رَف <span aria-hidden="true">↗</span>
+        جـرّب رَف <span aria-hidden="true">↗</span>
       </RouterLink>
     </div>
 

@@ -10,14 +10,14 @@
     <div class="catalog-window">
       <div class="browser-bar">
         <span></span><span></span><span></span>
-        <div class="browser-address">raff.dz / boutique-yasmine</div>
+        <div class="browser-address">raff.com / boutique-yasmine</div>
       </div>
       <div class="catalog-content">
         <div class="store-topline">
           <span class="store-avatar">ي</span>
           <div class="store-title">
             <strong>بوتيك ياسمين</strong>
-            <small>ملابس نسائية · بسكرة</small>
+            <small>ملابس نسائية · جدة</small>
           </div>
           <span class="verified-mark" aria-label="مثال توضيحي">✓</span>
         </div>
@@ -42,7 +42,7 @@
                 loading="lazy"
               />
             </div>
-            <strong>إطلالة يومية</strong><span>3,500 دج</span>
+            <strong>إطلالة يومية</strong><span>97.50 ر.س</span>
           </article>
           <article class="product-card">
             <div class="product-image image-two">
@@ -52,7 +52,7 @@
                 loading="lazy"
               />
             </div>
-            <strong>حقيبة كلاسيكية</strong><span>4,200 دج</span>
+            <strong>حقيبة كلاسيكية</strong><span>115 ر.س</span>
           </article>
           <article class="product-card">
             <div class="product-image image-three">
@@ -62,7 +62,7 @@
                 loading="lazy"
               />
             </div>
-            <strong>طقم الموسم</strong><span>5,800 دج</span>
+            <strong>طقم الموسم</strong><span>162 ر.س</span>
           </article>
         </div>
 

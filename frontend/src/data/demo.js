@@ -6,11 +6,11 @@ export const demoStore = {
   initial: 'ي',
   logo: null,
   tagline: 'ملابس نسائية واختيارات يومية',
-  city: 'بسكرة، الجزائر',
+  city: 'جدة، السعودية',
   address: null,
-  currency: 'DZD',
-  phone: '+213 555 00 00 00',
-  whatsapp: '+213 555 00 00 00',
+  currency: 'SAR',
+  phone: '+966 555 00 00 00',
+  whatsapp: '+966 555 00 00 00',
   socials: [],
   hero: {
     eyebrow: 'اختيارات الموسم',
@@ -32,7 +32,7 @@ export const demoProducts = [
     id: 'p1',
     name: 'طقم الموسم',
     description: 'اختيار أنيق للإطلالات اليومية',
-    price: 5800,
+    price: 162,
     originalPrice: null,
     category: 'ملابس',
     image:
@@ -44,8 +44,8 @@ export const demoProducts = [
     id: 'p2',
     name: 'إطلالة يومية',
     description: 'تصميم بسيط يسهل تنسيقه',
-    price: 3150,
-    originalPrice: 3500,
+    price: 90,
+    originalPrice: 97.50,
     category: 'ملابس',
     image:
       'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80',
@@ -56,8 +56,8 @@ export const demoProducts = [
     id: 'p3',
     name: 'حقيبة كلاسيكية',
     description: 'قطعة عملية للاستخدام اليومي',
-    price: 3570,
-    originalPrice: 4200,
+    price: 98,
+    originalPrice: 115,
     category: 'حقائب',
     image:
       'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80',
@@ -68,7 +68,7 @@ export const demoProducts = [
     id: 'p4',
     name: 'سترة خفيفة',
     description: 'تصميم مناسب لأيام الموسم',
-    price: 4900,
+    price: 149,
     originalPrice: null,
     category: 'ملابس',
     image:
@@ -80,7 +80,7 @@ export const demoProducts = [
     id: 'p5',
     name: 'إكسسوار أنيق',
     description: 'لمسة بسيطة لإطلالتك',
-    price: 1500,
+    price: 45,
     originalPrice: null,
     category: 'إكسسوارات',
     image:
@@ -92,7 +92,7 @@ export const demoProducts = [
     id: 'p6',
     name: 'حقيبة صغيرة',
     description: 'حجم عملي ولمسة هادئة',
-    price: 3200,
+    price: 92,
     originalPrice: null,
     category: 'حقائب',
     image:

@@ -123,7 +123,7 @@ const currencyHint = computed(() =>
           id="store-city"
           v-model="form.city"
           label="المدينة"
-          placeholder="مثال: بسكرة"
+          placeholder="مثال: مصر الجديدة"
           :maxlength="60"
           :error="visibleError('city')"
           @blur="touch('city')"
@@ -145,7 +145,7 @@ const currencyHint = computed(() =>
           label="رقم الهاتف"
           type="tel"
           autocomplete="tel"
-          placeholder="+213 555 00 00 00"
+          placeholder="+20 100 00 00 00"
           ltr
           :error="visibleError('phone')"
           @blur="touch('phone')"
@@ -155,7 +155,7 @@ const currencyHint = computed(() =>
           v-model="form.whatsapp"
           label="رقم واتساب"
           type="tel"
-          placeholder="+213 555 00 00 00"
+          placeholder="+20 100 00 00 00"
           hint="بالصيغة الدولية مع رمز الدولة. يظهر زر «تواصل عبر واتساب» في الكتالوج عند إدخاله."
           ltr
           :error="visibleError('whatsapp')"

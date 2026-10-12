@@ -29,7 +29,7 @@ function validateWhatsapp(value) {
   if (!v) return ''
   return INTERNATIONAL_PATTERN.test(cleanPhone(v))
     ? ''
-    : 'أدخل رقم واتساب بالصيغة الدولية مع رمز الدولة، مثال: +213555000000.'
+    : 'أدخل رقم واتساب بالصيغة الدولية مع رمز الدولة، مثال: +20100000000.'
 }
 
 function validateOptionalUrl(value) {
