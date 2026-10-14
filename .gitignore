@@ -7,6 +7,19 @@ Thumbs.db
 .vscode/
 
 # ==========================================
+# أسرار البيئة (أي مستوى في المشروع)
+# ==========================================
+.env
+.env.*
+!.env.example
+!.env.example.prod
+
+# بايثون: التجميع المؤقت في أي مجلد فرعي
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==========================================
 # Vue Frontend (مجلد الواجهة الأمامية)
 # ==========================================
 # Dependencies
@@ -29,10 +42,6 @@ frontend/pnpm-debug.log*
 # ==========================================
 # FastAPI Backend (مجلد الواجهة الخلفية)
 # ==========================================
-# Byte-compiled / optimized files
-backend/__pycache__/
-backend/*.py[cod]
-backend/*$py.class
 backend/uploads/*
 !backend/uploads/.gitkeep
 .mypy_cache/
@@ -44,11 +53,6 @@ backend/venv/
 backend/env/
 backend/ENV/
 
-# Environment variables & Secrets (ملفات المتغيرات السرية)
-backend/.env
-backend/.env.*
-!backend/.env.example
-!backend/.env.example.prod
 backend/secrets.json
 
 # Testing / Coverage
@@ -56,6 +60,6 @@ backend/.pytest_cache/
 backend/.coverage
 backend/htmlcov/
 
-# Databases (قواعد البيانات المحلية في حال استخدام SQLite)
+# Databases (قواعد البيانات المحلية)
 backend/*.db
 backend/*.sqlite3

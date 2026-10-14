@@ -14,7 +14,8 @@ dependencies = [
     "pydantic (>=2.8,<3)",
     "pydantic-settings (>=2.4,<3)",
     "redis (>=5.0,<7)",
-    "structlog (>=24.1)"
+    "structlog (>=24.1)",
+    "alembic (>=1.20.0,<2.0.0)"
 ]
 
 

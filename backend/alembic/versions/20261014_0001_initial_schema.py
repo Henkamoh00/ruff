@@ -1,0 +1,112 @@
+"""initial schema: users, stores, products
+
+Revision ID: 0001_initial_schema
+Revises:
+Create Date: 2026-10-14 00:00:00
+"""
+from collections.abc import Sequence
+
+import sqlalchemy as sa
+from alembic import op
+
+revision: str = "0001_initial_schema"
+down_revision: str | None = None
+branch_labels: str | Sequence[str] | None = None
+depends_on: str | Sequence[str] | None = None
+
+
+def upgrade() -> None:
+    op.create_table(
+        "users",
+        sa.Column("id", sa.Uuid(), server_default=sa.text("gen_random_uuid()"), nullable=False),
+        sa.Column("name", sa.String(length=80), nullable=False),
+        sa.Column("email", sa.String(length=254), nullable=False),
+        sa.Column("password_hash", sa.String(length=255), nullable=False),
+        sa.Column("deletion_requested_at", sa.DateTime(timezone=True), nullable=True),
+        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.CheckConstraint("char_length(btrim(name)) >= 2", name=op.f("ck_users_name_min_length")),
+        sa.CheckConstraint("email = lower(email)", name=op.f("ck_users_email_lowercase")),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_users")),
+        sa.UniqueConstraint("email", name=op.f("uq_users_email")),
+    )
+    op.create_index(
+        "ix_users_deletion_requested_at",
+        "users",
+        ["deletion_requested_at"],
+        unique=False,
+        postgresql_where=sa.text("deletion_requested_at IS NOT NULL"),
+    )
+
+    op.create_table(
+        "stores",
+        sa.Column("id", sa.Uuid(), server_default=sa.text("gen_random_uuid()"), nullable=False),
+        sa.Column("owner_id", sa.Uuid(), nullable=False),
+        sa.Column("name", sa.String(length=80), nullable=False),
+        sa.Column("description", sa.String(length=300), nullable=True),
+        sa.Column("category", sa.String(length=40), nullable=False),
+        sa.Column("currency", sa.String(length=3), nullable=False),
+        sa.Column("city", sa.String(length=60), nullable=False),
+        sa.Column("address", sa.String(length=150), nullable=True),
+        sa.Column("phone", sa.String(length=20), nullable=True),
+        sa.Column("whatsapp", sa.String(length=20), nullable=True),
+        sa.Column("instagram", sa.String(length=300), nullable=True),
+        sa.Column("facebook", sa.String(length=300), nullable=True),
+        sa.Column("website", sa.String(length=300), nullable=True),
+        sa.Column("logo_key", sa.String(length=255), nullable=True),
+        sa.Column("cover_key", sa.String(length=255), nullable=True),
+        sa.Column("published", sa.Boolean(), server_default=sa.text("false"), nullable=False),
+        sa.Column("published_before_deletion", sa.Boolean(), nullable=True),
+        sa.Column("plan", sa.String(length=20), server_default="free", nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.CheckConstraint("char_length(btrim(name)) >= 2", name=op.f("ck_stores_name_min_length")),
+        sa.CheckConstraint("currency ~ '^[A-Z]{3}$'", name=op.f("ck_stores_currency_format")),
+        sa.CheckConstraint("phone IS NULL OR phone ~ '^\\+?[0-9]{8,15}$'", name=op.f("ck_stores_phone_format")),
+        sa.CheckConstraint(
+            "whatsapp IS NULL OR whatsapp ~ '^\\+[0-9]{8,15}$'",
+            name=op.f("ck_stores_whatsapp_international_format"),
+        ),
+        sa.CheckConstraint("phone IS NOT NULL OR whatsapp IS NOT NULL", name=op.f("ck_stores_contact_required")),
+        sa.ForeignKeyConstraint(["owner_id"], ["users.id"], name=op.f("fk_stores_owner_id_users"), ondelete="CASCADE"),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_stores")),
+        sa.UniqueConstraint("owner_id", name=op.f("uq_stores_owner_id")),
+    )
+
+    op.create_table(
+        "products",
+        sa.Column("id", sa.Uuid(), server_default=sa.text("gen_random_uuid()"), nullable=False),
+        sa.Column("store_id", sa.Uuid(), nullable=False),
+        sa.Column("name", sa.String(length=100), nullable=False),
+        sa.Column("description", sa.String(length=300), nullable=True),
+        sa.Column("category", sa.String(length=40), nullable=True),
+        sa.Column("price", sa.Numeric(precision=10, scale=2), nullable=False),
+        sa.Column("original_price", sa.Numeric(precision=10, scale=2), nullable=True),
+        sa.Column("image_key", sa.String(length=255), nullable=True),
+        sa.Column("visible", sa.Boolean(), server_default=sa.text("true"), nullable=False),
+        sa.Column("available", sa.Boolean(), server_default=sa.text("true"), nullable=False),
+        sa.Column("sort_order", sa.Integer(), server_default=sa.text("0"), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.CheckConstraint("char_length(btrim(name)) >= 2", name=op.f("ck_products_name_min_length")),
+        sa.CheckConstraint("price >= 0", name=op.f("ck_products_price_non_negative")),
+        sa.CheckConstraint(
+            "original_price IS NULL OR original_price > price",
+            name=op.f("ck_products_original_price_above_price"),
+        ),
+        sa.ForeignKeyConstraint(["store_id"], ["stores.id"], name=op.f("fk_products_store_id_stores"), ondelete="CASCADE"),
+        sa.PrimaryKeyConstraint("id", name=op.f("pk_products")),
+    )
+    op.create_index("ix_products_store_id_sort_order", "products", ["store_id", "sort_order"], unique=False)
+
+
+def downgrade() -> None:
+    op.drop_index("ix_products_store_id_sort_order", table_name="products")
+    op.drop_table("products")
+    op.drop_table("stores")
+    op.drop_index(
+        "ix_users_deletion_requested_at",
+        table_name="users",
+        postgresql_where=sa.text("deletion_requested_at IS NOT NULL"),
+    )
+    op.drop_table("users")
