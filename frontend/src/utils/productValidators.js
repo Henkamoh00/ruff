@@ -1,14 +1,20 @@
 // تحقق أولي في الواجهة فقط. التحقق المعتمد سيكون في الخلفية.
 import { discountPercent } from '@/utils/format'
 
-const MAX_PRICE = 99999999
+// أكبر مبلغ مسموح: 99,999,999.99 بالسنتيمات
+const MAX_PRICE_CENTS = 9999999999
+const MONEY_PATTERN = /^[0-9]+(\.[0-9]{1,2})?$/
 
-// يعيد عددًا صحيحًا أو null. الأرقام اللاتينية 0-9 فقط.
+const MONEY_FORMAT_ERROR =
+  'استخدم الأرقام 0-9 فقط، مع نقطة عشرية واحدة وخانتين عشريتين على الأكثر، مثل: 97.50'
+
+// يعيد المبلغ بالسنتيمات (عددًا صحيحًا) أو null إن كانت الصيغة غير صالحة.
+// نعمل بالسنتيمات لتجنب أخطاء الفاصلة العائمة عند المقارنة.
 export function parseMoney(value) {
   const v = String(value).trim()
-  if (!/^[0-9]+$/.test(v)) return null
-  const n = Number(v)
-  return Number.isSafeInteger(n) ? n : null
+  if (!MONEY_PATTERN.test(v)) return null
+  const [whole, fraction = ''] = v.split('.')
+  return Number(whole) * 100 + Number(fraction.padEnd(2, '0'))
 }
 
 export function validateProductForm(form) {
@@ -32,8 +38,8 @@ export function validateProductForm(form) {
   if (!priceRaw) {
     errors.price = 'أدخل السعر.'
   } else if (price === null) {
-    errors.price = 'السعر يجب أن يكون عددًا صحيحًا بالأرقام 0-9 فقط، بلا فواصل أو كسور.'
-  } else if (price > MAX_PRICE) {
+    errors.price = MONEY_FORMAT_ERROR
+  } else if (price > MAX_PRICE_CENTS) {
     errors.price = 'السعر كبير جدًا.'
   }
 
@@ -41,8 +47,8 @@ export function validateProductForm(form) {
   if (originalRaw) {
     const original = parseMoney(form.originalPrice)
     if (original === null) {
-      errors.originalPrice = 'السعر الأصلي يجب أن يكون عددًا صحيحًا بالأرقام 0-9 فقط.'
-    } else if (original > MAX_PRICE) {
+      errors.originalPrice = MONEY_FORMAT_ERROR
+    } else if (original > MAX_PRICE_CENTS) {
       errors.originalPrice = 'السعر الأصلي كبير جدًا.'
     } else if (price !== null && !errors.price && original <= price) {
       errors.originalPrice = 'السعر الأصلي يجب أن يكون أعلى من السعر الحالي.'

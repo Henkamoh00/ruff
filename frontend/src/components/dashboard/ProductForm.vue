@@ -102,8 +102,8 @@ const submitLabel = computed(() => (props.mode === 'create' ? 'إضافة الم
           id="product-price"
           v-model="form.price"
           :label="`السعر الحالي (${currency})`"
-          placeholder="3500"
-          hint="عدد صحيح بالأرقام 0-9 فقط."
+          placeholder="3500.00"
+          hint="الأرقام 0-9 فقط، ويمكن إضافة نقطة وخانتين عشريتين على الأكثر، مثل: 97.50"
           ltr
           :error="visibleError('price')"
           @blur="touch('price')"
@@ -112,7 +112,7 @@ const submitLabel = computed(() => (props.mode === 'create' ? 'إضافة الم
           id="product-original-price"
           v-model="form.originalPrice"
           :label="`السعر الأصلي (${currency}، اختياري)`"
-          placeholder="4200"
+          placeholder="4200.00"
           hint="أدخله إن كان المنتج مخفضًا، ويجب أن يكون أعلى من السعر الحالي."
           ltr
           :error="visibleError('originalPrice')"

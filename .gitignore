@@ -33,6 +33,10 @@ frontend/pnpm-debug.log*
 backend/__pycache__/
 backend/*.py[cod]
 backend/*$py.class
+backend/uploads/*
+!backend/uploads/.gitkeep
+.mypy_cache/
+.ruff_cache/
 
 # Virtual Environments (البيئات الافتراضية)
 backend/.venv/
@@ -42,6 +46,9 @@ backend/ENV/
 
 # Environment variables & Secrets (ملفات المتغيرات السرية)
 backend/.env
+backend/.env.*
+!backend/.env.example
+!backend/.env.example.prod
 backend/secrets.json
 
 # Testing / Coverage

@@ -1,21 +1,26 @@
 import { siteConfig } from '@/config/site'
 
-// يعرض السعر بالعملة المحددة، مثل: DZD 3,500
+// يعرض السعر بالعملة المحددة، مثل: DZD 3,500 أو DZD 97.50
+// الأعداد الصحيحة بلا كسور، وغيرها بخانتين عشريتين.
 // نحيط النص بعلامتي عزل اتجاه (LRI/PDI) كي لا تتبدل أجزاؤه داخل نص عربي
 export function formatPrice(value, currency) {
   const code = currency || siteConfig.defaultCurrency
   const amount = Number(value)
+  const digits = Number.isInteger(amount) ? 0 : 2
   let text
   try {
     text = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: code,
       currencyDisplay: 'code',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
     }).format(amount)
   } catch {
-    text = `${amount.toLocaleString('en-US')} ${code}`
+    text = `${amount.toLocaleString('en-US', {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits,
+    })} ${code}`
   }
   return `\u2066${text}\u2069`
 }
